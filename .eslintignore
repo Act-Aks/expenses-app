@@ -1,0 +1,8 @@
+node_modules
+assets
+
+.prettierignore
+.prettierrc.js
+
+yarn.lock
+*.lock
