@@ -2,6 +2,7 @@ node_modules/
 .expo/
 npm-debug.*
 .vscode/
+.husky/
 
 # macOS
 .DS_Store
