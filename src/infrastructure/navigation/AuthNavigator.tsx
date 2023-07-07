@@ -1,6 +1,9 @@
-import { AccountScreen } from '../../screens';
+import { AccountScreen } from '@screens';
+import { PropsWithChildren } from 'react';
 
-const AuthNavigator = () => {
+interface AuthNavigatorProps extends PropsWithChildren {}
+
+const AuthNavigator: React.FC<AuthNavigatorProps> = () => {
   return <AccountScreen />;
 };
 
