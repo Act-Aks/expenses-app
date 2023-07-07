@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --config .prettierrc.js --ignore-pattern .prettierignore .",
-    "format:fix": "prettier --config .prettierrc.js --ignore-pattern .prettierignore . --write"
+    "format:fix": "prettier --config .prettierrc.js --ignore-pattern .prettierignore . --write",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
   },
   "dependencies": {
     "expo": "^49.0.0",
@@ -17,22 +18,46 @@
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "^0.72.1",
-    "react-native-reanimated": "^3.3.0"
+    "react-native-reanimated": "^3.3.0",
+    "styled-components": "^6.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/react": "~18.0.14",
     "@types/react-native": "^0.72.2",
+    "@types/styled-components": "^5.1.26",
+    "@types/styled-components-react-native": "^5.2.1",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8.44.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-transform-arrow-functions": "^7.0.0",
+    "@babel/plugin-transform-shorthand-properties": "^7.0.0",
+    "@babel/plugin-transform-template-literals": "^7.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "yarn format:fix",
+      "yarn lint:fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "private": true
 }
