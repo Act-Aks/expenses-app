@@ -1,11 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import ExpensesApp from './src';
 
 export default function App() {
-  return (
-    <View className="flex-1 justify-center bg-slate-400">
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <ExpensesApp />;
 }

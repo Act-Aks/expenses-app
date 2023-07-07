@@ -13,6 +13,7 @@
     "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.7",
     "expo": "^49.0.0",
     "expo-status-bar": "^1.6.0",
     "nativewind": "^2.0.11",
@@ -30,7 +31,6 @@
     "@types/styled-components-react-native": "^5.2.1",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
-    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8.44.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
@@ -38,6 +38,8 @@
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
+    "react-native-safe-area-context": "^4.6.4",
+    "react-native-screens": "^3.22.1",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.1.6"
   },
