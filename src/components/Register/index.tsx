@@ -1,9 +1,15 @@
-import { Text, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 
 const Register = () => {
   return (
-    <View>
-      <Text>Register</Text>
+    <View style={{ flex: 1 }}>
+      <View style={{ gap: 8, backgroundColor: 'red' }}>
+        <TextInput placeholder="Email" />
+        <TextInput placeholder="Password" />
+      </View>
+      <Pressable>
+        <Text>REGISTER</Text>
+      </Pressable>
     </View>
   );
 };

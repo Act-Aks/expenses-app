@@ -1,10 +1,24 @@
-import { Text, View } from 'react-native';
+import { TextInput, View } from 'react-native';
+
+import {
+  ButtonLabel,
+  FormInputContainer,
+  FormInputs,
+  Input,
+  LoginFormButton,
+} from './style';
 
 const Login = () => {
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <FormInputContainer>
+      <FormInputs>
+        <Input placeholder="Email" />
+        <Input placeholder="Password" />
+      </FormInputs>
+      <LoginFormButton>
+        <ButtonLabel>{'LOG IN'}</ButtonLabel>
+      </LoginFormButton>
+    </FormInputContainer>
   );
 };
 

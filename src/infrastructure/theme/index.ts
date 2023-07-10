@@ -1,4 +1,4 @@
-const Colors = {
+export const Colors = {
   bg: {
     black: 'rgb(0 0 0)',
     white: 'rgb(255 255 255)',
@@ -248,5 +248,5 @@ const Colors = {
 } as const;
 
 export const theme = {
-  Colors,
+  colors: Colors,
 };
