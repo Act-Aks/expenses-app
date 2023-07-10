@@ -1,1 +1,1 @@
-export { default as AccountScreen } from './Auth/AccountScreen';
+export { default as AccountScreen } from './AccountScreen';
