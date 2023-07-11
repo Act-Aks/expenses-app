@@ -15,6 +15,7 @@ export const GradientView = styled(LinearGradient)`
 
 export const AnimatedView = styled(Animated.View)({
   position: 'relative',
+  zIndex: '1',
 });
 
 export const CloseButton = styled(Animated.View)(props => ({
