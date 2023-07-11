@@ -1,11 +1,15 @@
 import { SCREEN_HEIGHT } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, TouchableWithoutFeedback, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components';
 
 export const StyledScreen = styled(SafeAreaView)({
+  flex: 1,
+});
+
+export const AvoidKeyboard = styled(TouchableWithoutFeedback)({
   flex: 1,
 });
 
@@ -68,7 +72,7 @@ export const FormContents = styled(View)(props => ({
 }));
 
 export const StyledPressable = styled(Pressable)(props => ({
-  backgroundColor: props.theme.colors.purple500,
+  backgroundColor: props.theme.colors.purple950,
   padding: '16px',
   borderRadius: '40px',
   borderWidth: '2px',

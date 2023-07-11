@@ -1,6 +1,12 @@
 import { Colors } from '@infrastructure/theme';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Pressable,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import styled from 'styled-components';
 
 export const GradientForm = styled(LinearGradient)`
@@ -14,12 +20,12 @@ export const FormInputContainer = styled(View)({
   padding: '16px',
 });
 
-export const FormInputs = styled(View)({
+export const FormInputs = styled(KeyboardAvoidingView)({
   gap: '8px',
 });
 
 export const Input = styled(TextInput).attrs(props => ({
-  placeholderTextColor: props.theme.colors.amber100,
+  placeholderTextColor: props.theme.colors.amber300,
 }))(props => ({
   gap: '8px',
   height: '50px',
@@ -28,6 +34,7 @@ export const Input = styled(TextInput).attrs(props => ({
   borderRadius: '25px',
   padding: '12px',
   backgroundColor: props.theme.colors.violet500,
+  color: props.theme.colors.white,
 }));
 
 export const FormButton = styled(Pressable)(props => ({
