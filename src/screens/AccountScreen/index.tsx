@@ -1,134 +1,93 @@
 import { Login, Register } from '@components';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '@constants';
+import { Colors } from '@infrastructure/theme';
 import { useState } from 'react';
-import { Dimensions, StyleSheet, Text } from 'react-native';
-import Animated, {
-  interpolate,
-  useAnimatedStyle,
-  useSharedValue,
-  withDelay,
-  withTiming,
-} from 'react-native-reanimated';
+import { StyleSheet } from 'react-native';
 import Svg, { ClipPath, Ellipse, Image } from 'react-native-svg';
 
 import {
   AnimatedView,
   ButtonContainer,
   ButtonLabel,
-  Close,
   CloseButton,
+  CloseText,
   FormContainer,
+  FormContents,
+  GradientView,
   StyledPressable,
   StyledScreen,
 } from './style';
+import useAccountAnimationStyles from './useAccountAnimationStyles';
 
 type WindowScreen = 'LOGIN' | 'REGISTER';
 
 const AccountScreen: React.FC<object> = () => {
-  const { height, width } = Dimensions.get('window');
-  const [window, showWindow] = useState<WindowScreen>();
-  const imageAnimation = useSharedValue(1);
-
-  const imageAnimationStyle = useAnimatedStyle(() => {
-    const interpolation = interpolate(
-      imageAnimation.value,
-      [0, 1],
-      [-height / 2, 0],
-    );
-
-    return {
-      transform: [
-        {
-          translateY: withTiming(interpolation, { duration: 1000 }),
-        },
-      ],
-    };
-  });
-
-  const buttonAnimationStyle = useAnimatedStyle(() => {
-    const interpolation = interpolate(imageAnimation.value, [0, 1], [250, 0]);
-
-    return {
-      opacity: withTiming(imageAnimation.value, { duration: 500 }),
-      transform: [
-        {
-          translateY: withTiming(interpolation, { duration: 1000 }),
-        },
-      ],
-    };
-  });
-
-  const closeBtnAnimationStyle = useAnimatedStyle(() => {
-    const interpolation = interpolate(imageAnimation.value, [0, 1], [180, 360]);
-
-    return {
-      opacity: withTiming(imageAnimation.value === 1 ? 0 : 1, {
-        duration: 1000,
-      }),
-      transform: [
-        { rotate: withTiming(interpolation + 'deg', { duration: 1000 }) },
-      ],
-    };
-  });
-
-  const formAnimationStyle = useAnimatedStyle(() => {
-    return {
-      opacity:
-        imageAnimation.value === 0
-          ? withDelay(400, withTiming(1, { duration: 800 }))
-          : withTiming(0, { duration: 300 }),
-    };
-  });
+  const [screen, showScreen] = useState<WindowScreen>('LOGIN');
+  const {
+    animation,
+    imageAnimationStyle,
+    buttonAnimationStyle,
+    formAnimationStyle,
+    closeBtnAnimationStyle,
+  } = useAccountAnimationStyles({ value: 1 });
 
   const handleLoginPress = () => {
-    imageAnimation.value = 0;
-    showWindow('LOGIN');
+    animation.value = 0;
+    showScreen('LOGIN');
   };
   const handleRegisterPress = () => {
-    imageAnimation.value = 0;
-    showWindow('REGISTER');
+    animation.value = 0;
+    showScreen('REGISTER');
   };
 
   return (
     <StyledScreen>
-      <AnimatedView style={[StyleSheet.absoluteFill, imageAnimationStyle]}>
-        <Svg height={height} width={width}>
-          <ClipPath id="clipPathId">
-            <Ellipse
-              cx={SCREEN_WIDTH / 2}
-              rx={SCREEN_HEIGHT}
-              ry={SCREEN_HEIGHT}
+      <GradientView
+        colors={[Colors.purple400, Colors.blue400, Colors.purple400]}
+        start={{ x: 1, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={StyleSheet.absoluteFill}>
+        <AnimatedView style={[StyleSheet.absoluteFill, imageAnimationStyle]}>
+          <Svg height={SCREEN_HEIGHT} width={SCREEN_WIDTH}>
+            <ClipPath id="clipPathId">
+              <Ellipse
+                cx={SCREEN_WIDTH / 2}
+                rx={SCREEN_HEIGHT}
+                ry={SCREEN_HEIGHT}
+              />
+            </ClipPath>
+            <Image
+              href={require('@assets/main.png')}
+              height={SCREEN_HEIGHT}
+              width={SCREEN_WIDTH}
+              preserveAspectRatio={'xMidyMid slice'}
+              clipPath="url(#clipPathId)"
             />
-          </ClipPath>
-          <Image
-            href={require('@assets/main.png')}
-            height={height}
-            width={width}
-            preserveAspectRatio={'xMidyMid slice'}
-            clipPath="url(#clipPathId)"
-          />
-        </Svg>
-        <CloseButton style={closeBtnAnimationStyle}>
-          <Close onPress={() => (imageAnimation.value = 1)}>{'X'}</Close>
-        </CloseButton>
-      </AnimatedView>
+          </Svg>
+        </AnimatedView>
 
-      <ButtonContainer>
-        <AnimatedView style={buttonAnimationStyle}>
-          <StyledPressable onPress={handleLoginPress}>
-            <ButtonLabel>{'LOGIN'}</ButtonLabel>
-          </StyledPressable>
-        </AnimatedView>
-        <AnimatedView style={buttonAnimationStyle}>
-          <StyledPressable onPress={handleRegisterPress}>
-            <ButtonLabel>{'REGISTER'}</ButtonLabel>
-          </StyledPressable>
-        </AnimatedView>
+        <ButtonContainer>
+          <AnimatedView style={buttonAnimationStyle}>
+            <StyledPressable onPress={handleLoginPress}>
+              <ButtonLabel>{'LOGIN'}</ButtonLabel>
+            </StyledPressable>
+          </AnimatedView>
+          <AnimatedView style={buttonAnimationStyle}>
+            <StyledPressable onPress={handleRegisterPress}>
+              <ButtonLabel>{'REGISTER'}</ButtonLabel>
+            </StyledPressable>
+          </AnimatedView>
+        </ButtonContainer>
+
         <FormContainer style={[StyleSheet.absoluteFill, formAnimationStyle]}>
-          <Login />
-          {window && window === 'REGISTER' && <Register />}
+          <FormContents>
+            <CloseButton style={closeBtnAnimationStyle}>
+              <CloseText onPress={() => (animation.value = 1)}>{'X'}</CloseText>
+            </CloseButton>
+            {screen === 'LOGIN' ? <Login /> : <Register />}
+          </FormContents>
         </FormContainer>
-      </ButtonContainer>
+      </GradientView>
     </StyledScreen>
   );
 };
