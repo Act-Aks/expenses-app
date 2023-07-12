@@ -67,6 +67,7 @@ const useAccountAnimationStyles = ({ value }: { value: number }) => {
     closeBtnAnimationStyle,
     formAnimationStyle,
     imageAnimationStyle,
+    setAnimationValue: (v: number) => (animation.value = v),
   };
 };
 

@@ -39,6 +39,11 @@ export const AuthenticationProvider = (props: {
   });
 
   const onLogin = (email: string, password: string) => {
+    if (email.length === 0 || password.length === 0) {
+      setError('Please fill respective fields');
+      return;
+    }
+
     setIsLoading(true);
     loginRequest(auth, email, password)
       .then(res => {
@@ -57,13 +62,13 @@ export const AuthenticationProvider = (props: {
     password: string,
     repeatedPassword: string,
   ) => {
-    setIsLoading(true);
     if (password !== repeatedPassword) {
       setError('Error: Passwords do not match');
       Alert.alert('Error: Passwords do not match');
       return;
     }
 
+    setIsLoading(true);
     createAccountRequest(auth, email, password)
       .then(res => {
         setUser(res.user);

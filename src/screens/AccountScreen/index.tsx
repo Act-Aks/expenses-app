@@ -30,14 +30,15 @@ const AccountScreen: React.FC<object> = () => {
     buttonAnimationStyle,
     formAnimationStyle,
     closeBtnAnimationStyle,
+    setAnimationValue,
   } = useAccountAnimationStyles({ value: 1 });
 
   const handleLoginPress = () => {
-    animation.value = 0;
+    setAnimationValue(0);
     showScreen('LOGIN');
   };
   const handleRegisterPress = () => {
-    animation.value = 0;
+    setAnimationValue(0);
     showScreen('REGISTER');
   };
   const dismissKeyboard = () => Keyboard.dismiss();
@@ -88,7 +89,7 @@ const AccountScreen: React.FC<object> = () => {
                 <CloseText
                   onPress={() => {
                     dismissKeyboard();
-                    animation.value = 1;
+                    setAnimationValue(1);
                   }}>
                   {'X'}
                 </CloseText>

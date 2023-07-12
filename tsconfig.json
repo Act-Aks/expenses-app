@@ -12,7 +12,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
       "@screens/*": ["src/screens/*"],
-      "@services/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "types": [
       "@types/styled-components",

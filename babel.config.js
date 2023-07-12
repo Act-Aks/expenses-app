@@ -28,6 +28,7 @@ module.exports = function (api) {
             '@infrastructure': './src/infrastructure',
             '@screens': './src/screens',
             '@services': './src/services',
+            '@utils': './src/utils',
           },
         },
       ],
