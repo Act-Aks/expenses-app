@@ -39,7 +39,6 @@ export const CloseButton = styled(Animated.View)(props => ({
   top: '-40px',
   right: '20px',
   position: 'absolute',
-  // overflow: 'hidden',
 }));
 
 export const CloseText = styled(Text)(props => ({
@@ -60,16 +59,16 @@ export const ButtonContainer = styled(View)({
   zIndex: '1',
 });
 
-export const FormContainer = styled(Animated.View)(props => ({
+export const FormContainer = styled(Animated.View)({
   justifyContent: 'center',
   alignSelf: 'center',
-}));
+});
 
-export const FormContents = styled(View)(props => ({
+export const FormContents = styled(View)({
   position: 'relative',
   width: '100%',
   padding: '20px',
-}));
+});
 
 export const StyledPressable = styled(Pressable)(props => ({
   backgroundColor: props.theme.colors.purple950,

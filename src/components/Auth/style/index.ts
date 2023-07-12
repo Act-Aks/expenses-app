@@ -9,10 +9,11 @@ import {
 } from 'react-native';
 import styled from 'styled-components';
 
-export const GradientForm = styled(LinearGradient)`
+export const GradientForm = styled(LinearGradient)<{ loading?: boolean }>`
   border-radius: 20px;
   border-width: 2px;
   border-color: ${Colors.amber100};
+  opacity: ${props => (props.loading ? '0' : '1')};
 `;
 
 export const FormInputContainer = styled(View)({

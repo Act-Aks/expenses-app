@@ -1,11 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { AuthenticationProvider } from '@services/auth/authContext';
 
 import AuthNavigator from './AuthNavigator';
 
 export const Navigator = () => {
   return (
-    <NavigationContainer>
-      <AuthNavigator />
-    </NavigationContainer>
+    <AuthenticationProvider>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </AuthenticationProvider>
   );
 };

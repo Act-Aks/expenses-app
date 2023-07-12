@@ -7,10 +7,12 @@
       "@*": ["src/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["src/components/*"],
+      "@configs/*": ["src/configs/*"],
       "@constants/*": ["src/constants/*"],
       "@hooks/*": ["src/hooks/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
-      "@screens/*": ["src/screens/*"]
+      "@screens/*": ["src/screens/*"],
+      "@services/*": ["src/services/*"]
     },
     "types": [
       "@types/styled-components",
