@@ -1,4 +1,5 @@
 import { SCREEN_WIDTH } from '@constants';
+import { useEffect } from 'react';
 import {
   interpolate,
   useAnimatedStyle,
@@ -60,6 +61,10 @@ const useAccountAnimationStyles = ({ value }: { value: number }) => {
           : withTiming(0, { duration: 300 }),
     };
   });
+
+  useEffect(() => {
+    animation.value = withTiming(1, { duration: 300 });
+  }, []);
 
   return {
     animation,

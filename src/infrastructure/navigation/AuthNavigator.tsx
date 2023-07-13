@@ -1,10 +1,10 @@
-import { AccountScreen } from '@screens';
-import { PropsWithChildren } from 'react';
+import AuthStack from './stacks/AuthStack';
 
-interface AuthNavigatorProps extends PropsWithChildren {}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface AuthNavigatorProps extends Record<string, any> {}
 
 const AuthNavigator: React.FC<AuthNavigatorProps> = () => {
-  return <AccountScreen />;
+  return <AuthStack />;
 };
 
 export default AuthNavigator;

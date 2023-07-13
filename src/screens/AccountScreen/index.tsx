@@ -1,6 +1,7 @@
 import { Login, Register } from '@components';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '@constants';
 import { Colors } from '@infrastructure/theme';
+import useFadeAnimation from '@utils/animations/useFadeAnimation';
 import { useState } from 'react';
 import { Keyboard, StyleSheet } from 'react-native';
 import Svg, { ClipPath, Ellipse, Image } from 'react-native-svg';
@@ -22,10 +23,13 @@ import useAccountAnimationStyles from './useAccountAnimationStyles';
 
 type WindowScreen = 'LOGIN' | 'REGISTER';
 
-const AccountScreen: React.FC<object> = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface AccountScreenProps extends Record<string, any> {}
+
+const AccountScreen: React.FC<AccountScreenProps> = () => {
   const [screen, showScreen] = useState<WindowScreen>('LOGIN');
+  const { fadeAnimatedStyle } = useFadeAnimation({});
   const {
-    animation,
     imageAnimationStyle,
     buttonAnimationStyle,
     formAnimationStyle,
@@ -71,12 +75,12 @@ const AccountScreen: React.FC<object> = () => {
           </AnimatedView>
 
           <ButtonContainer>
-            <AnimatedView style={buttonAnimationStyle}>
+            <AnimatedView style={[fadeAnimatedStyle, buttonAnimationStyle]}>
               <StyledPressable onPress={handleLoginPress}>
                 <ButtonLabel>{'LOGIN'}</ButtonLabel>
               </StyledPressable>
             </AnimatedView>
-            <AnimatedView style={buttonAnimationStyle}>
+            <AnimatedView style={[fadeAnimatedStyle, buttonAnimationStyle]}>
               <StyledPressable onPress={handleRegisterPress}>
                 <ButtonLabel>{'REGISTER'}</ButtonLabel>
               </StyledPressable>
