@@ -1,4 +1,5 @@
 import Icon, { IconType } from '@components/Icon';
+import { Colors } from '@infrastructure/theme';
 import {
   BottomTabBarButtonProps,
   createBottomTabNavigator,
@@ -87,7 +88,7 @@ const TabButton = (props: TabButtonProps) => {
           <Icon
             type={item.type}
             name={focused ? item.activeIcon : item.inActiveIcon}
-            // color={colors.light.primaryContainer}
+            color={focused ? Colors.purple.default : Colors.gray400}
           />
         </Animated.View>
       </Animated.View>
@@ -99,17 +100,16 @@ const TabNavigator = () => {
   return (
     <Tabs.Navigator
       screenOptions={{
-        // headerShown: false,
         tabBarStyle: styles.tabBarStyle,
       }}>
-      {TabArray.map((item, index) => {
+      {TabArray.map(item => {
         const tabBarButton = (props: BottomTabBarButtonProps) => (
           <TabButton {...props} item={item} />
         );
 
         return (
           <Tabs.Screen
-            key={index}
+            key={item.route}
             name={item.route}
             component={item.component}
             options={{

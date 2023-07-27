@@ -1,4 +1,6 @@
-export const Colors = {
+import { Colors as colors, FontSizes, Spacing } from '@act-aks/constants';
+
+export const extraColors = {
   black: 'rgb(0 0 0)',
   white: 'rgb(255 255 255)',
   slate50: 'rgb(248 250 252)',
@@ -245,6 +247,10 @@ export const Colors = {
   rose950: 'rgb(76 5 25)',
 } as const;
 
+export const Colors = { ...colors, ...extraColors };
+
 export const theme = {
   colors: Colors,
+  spacing: Spacing,
+  fontSizes: FontSizes,
 };
