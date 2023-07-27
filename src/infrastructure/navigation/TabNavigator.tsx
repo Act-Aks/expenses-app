@@ -1,9 +1,9 @@
-import Icon, { Icons, IconType } from '@components/Icon';
-import { Tabs as TabRoutes } from '@infrastructure/types';
+import Icon, { IconType } from '@components/Icon';
 import {
   BottomTabBarButtonProps,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
+import { DashBoard, Profile } from '@screens';
 import { useEffect } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Animated, {
@@ -13,11 +13,13 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import DashBoardStack from './stacks/DashBoardStack';
-import ProfileStack from './stacks/ProfileStack';
+type TabsStackParamsList = {
+  DashBoard: undefined;
+  Profile: undefined;
+};
 
 type Tab = {
-  route: TabRoutes;
+  route: keyof TabsStackParamsList;
   label: string;
   type: IconType;
   activeIcon: string;
@@ -31,20 +33,20 @@ interface TabButtonProps extends BottomTabBarButtonProps {
 
 const TabArray: Array<Tab> = [
   {
-    route: 'DashBoardTab',
+    route: 'DashBoard',
     label: 'Dashboard',
-    type: Icons.Ionicons,
+    type: IconType.Ionicons,
     activeIcon: 'home',
     inActiveIcon: 'home-outline',
-    component: DashBoardStack,
+    component: DashBoard,
   },
   {
-    route: 'ProfileTab',
+    route: 'Profile',
     label: 'Profile',
-    type: Icons.FontAwesome,
+    type: IconType.FontAwesome,
     activeIcon: 'user-circle',
     inActiveIcon: 'user-circle-o',
-    component: ProfileStack,
+    component: Profile,
   },
 ];
 
@@ -97,7 +99,7 @@ const TabNavigator = () => {
   return (
     <Tabs.Navigator
       screenOptions={{
-        headerShown: false,
+        // headerShown: false,
         tabBarStyle: styles.tabBarStyle,
       }}>
       {TabArray.map((item, index) => {

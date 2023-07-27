@@ -1,10 +1,15 @@
-import AuthStack from './stacks/AuthStack';
+import { AuthStackParamsList } from '@infrastructure/types';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AccountScreen } from '@screens';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface AuthNavigatorProps extends Record<string, any> {}
+const AuthStack = createNativeStackNavigator<AuthStackParamsList>();
 
-const AuthNavigator: React.FC<AuthNavigatorProps> = () => {
-  return <AuthStack />;
+const AuthNavigator = () => {
+  return (
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name={'Account'} component={AccountScreen} />
+    </AuthStack.Navigator>
+  );
 };
 
 export default AuthNavigator;

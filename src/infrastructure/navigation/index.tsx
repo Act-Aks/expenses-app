@@ -3,7 +3,7 @@ import { SplashScreen } from '@screens';
 import useAuthenticationContext from '@services/auth/authContext';
 
 import AuthNavigator from './AuthNavigator';
-import TabNavigator from './TabNavigator';
+import RootNavigator from './RootNavigator';
 
 export const Navigator = () => {
   const { isAuthenticated, isLoading } = useAuthenticationContext();
@@ -13,7 +13,7 @@ export const Navigator = () => {
       {isLoading ? (
         <SplashScreen />
       ) : isAuthenticated ? (
-        <TabNavigator />
+        <RootNavigator />
       ) : (
         <AuthNavigator />
       )}

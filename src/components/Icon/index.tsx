@@ -1,52 +1,46 @@
-import { ColorValue } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Foundation from 'react-native-vector-icons/Foundation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Octicons from 'react-native-vector-icons/Octicons';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import {
+  Icon as NativeElementIcon,
+  IconProps as NativeElementIconProps,
+} from '@rneui/themed';
 
-export const Icons = {
-  MaterialCommunityIcons,
-  MaterialIcons,
-  Ionicons,
-  Feather,
-  FontAwesome,
-  FontAwesome5,
-  AntDesign,
-  Entypo,
-  SimpleLineIcons,
-  Octicons,
-  Foundation,
-  EvilIcons,
-};
-
-export type IconType = (typeof Icons)[keyof typeof Icons];
+export enum IconType {
+  MaterialCommunityIcons = 'material-community',
+  MaterialIcons = 'material',
+  Ionicons = 'ionicon',
+  FontAwesome = 'font-awesome',
+  FontAwesome5 = 'font-awesome-5',
+  AntDesign = 'antdesign',
+  Entypo = 'entypo',
+  SimpleLineIcons = 'simple-line-icon',
+  Octicons = 'octicon',
+  Foundation = 'foundation',
+  EvilIcons = 'evilicon',
+}
 
 type IconProps = {
   type: IconType;
   name: string;
-  color?: ColorValue | number;
+  color?: string;
   size?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  style?: Record<string, any>;
-};
+} & NativeElementIconProps;
 
-const Icon = ({ type, name, color, size = 24, style }: IconProps) => {
-  const fontSize = 24;
-  const Tag = type;
+const Icon: React.FC<IconProps> = ({
+  type,
+  name,
+  color,
+  size = 24,
+  ...props
+}: IconProps) => {
   return (
-    <>
-      {type && name && (
-        <Tag name={name} size={size || fontSize} color={color} style={style} />
-      )}
-    </>
+    name && (
+      <NativeElementIcon
+        {...props}
+        name={name}
+        type={type}
+        size={size}
+        color={color}
+      />
+    )
   );
 };
 
