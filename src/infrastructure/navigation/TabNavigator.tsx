@@ -1,5 +1,6 @@
 import Icon, { IconType } from '@components/Icon';
 import { Colors } from '@infrastructure/theme';
+import { TabsStackParamsList } from '@infrastructure/types';
 import {
   BottomTabBarButtonProps,
   createBottomTabNavigator,
@@ -13,11 +14,6 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-
-type TabsStackParamsList = {
-  DashBoard: undefined;
-  Profile: undefined;
-};
 
 type Tab = {
   route: keyof TabsStackParamsList;
@@ -51,7 +47,7 @@ const TabArray: Array<Tab> = [
   },
 ];
 
-const Tabs = createBottomTabNavigator();
+const Tabs = createBottomTabNavigator<TabsStackParamsList>();
 
 const TabButton = (props: TabButtonProps) => {
   const { item, onPress, accessibilityState } = props;
@@ -114,7 +110,6 @@ const TabNavigator = () => {
             component={item.component}
             options={{
               headerTitle: item.label,
-              tabBarShowLabel: false,
               tabBarButton,
             }}
           />
@@ -129,7 +124,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: colors.light.onPrimaryContainer,
+    backgroundColor: Colors.purple500,
   },
   tabBarStyle: {
     height: 60,
@@ -140,7 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 60,
     width: 60,
-    // backgroundColor: colors.light.primaryContainer,
+    backgroundColor: Colors.purple950,
     borderRadius: 30,
   },
   tabIcon: {
@@ -148,7 +143,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '90%',
     width: '90%',
-    // backgroundColor: colors.light.onPrimaryContainer,
     borderRadius: 30,
   },
 });
