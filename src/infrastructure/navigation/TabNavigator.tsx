@@ -1,11 +1,3 @@
-import Icon, { IconType } from '@components/Icon';
-import { Colors } from '@infrastructure/theme';
-import { TabsStackParamsList } from '@infrastructure/types';
-import {
-  BottomTabBarButtonProps,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
-import { DashBoard, Profile } from '@screens';
 import { useEffect } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Animated, {
@@ -14,6 +6,15 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+
+import Icon, { IconType } from '@components/Icon';
+import { Colors } from '@infrastructure/theme';
+import { TabsStackParamsList } from '@infrastructure/types';
+import {
+  BottomTabBarButtonProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
+import { DashBoard, Profile } from '@screens';
 
 type Tab = {
   route: keyof TabsStackParamsList;

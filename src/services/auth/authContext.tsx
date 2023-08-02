@@ -1,7 +1,8 @@
-import { FIREBASE_AUTH, onAuthStateChanged } from '@configs/firebase';
 import { User } from 'firebase/auth';
 import { createContext, useContext, useState } from 'react';
 import { Alert } from 'react-native';
+
+import { FIREBASE_AUTH, onAuthStateChanged } from '@configs/firebase';
 
 import { createAccountRequest, loginRequest } from './authService';
 
