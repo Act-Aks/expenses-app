@@ -1,4 +1,3 @@
-import { Colors } from '@infrastructure/theme';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   KeyboardAvoidingView,
@@ -8,6 +7,8 @@ import {
   View,
 } from 'react-native';
 import styled from 'styled-components';
+
+import { Colors } from '@infrastructure/theme';
 
 export const GradientForm = styled(LinearGradient)<{ loading?: boolean }>`
   border-radius: 20px;

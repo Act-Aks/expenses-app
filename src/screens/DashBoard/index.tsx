@@ -1,9 +1,11 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+
+import Expenses from '@components/Expenses';
 
 const DashBoard = () => {
   return (
     <View>
-      <Text>DashBoard</Text>
+      <Expenses />
     </View>
   );
 };

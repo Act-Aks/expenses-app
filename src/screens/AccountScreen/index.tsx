@@ -1,10 +1,11 @@
+import { useState } from 'react';
+import { Keyboard, StyleSheet } from 'react-native';
+import Svg, { ClipPath, Ellipse, Image } from 'react-native-svg';
+
 import { Login, Register } from '@components';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '@constants';
 import { Colors } from '@infrastructure/theme';
 import useFadeAnimation from '@utils/animations/useFadeAnimation';
-import { useState } from 'react';
-import { Keyboard, StyleSheet } from 'react-native';
-import Svg, { ClipPath, Ellipse, Image } from 'react-native-svg';
 
 import {
   AnimatedView,

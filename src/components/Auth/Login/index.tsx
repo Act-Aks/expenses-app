@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import { Colors } from '@infrastructure/theme';
 import useAuthenticationContext from '@services/auth/authContext';
-import { useState } from 'react';
 
 import {
   ButtonLabel,

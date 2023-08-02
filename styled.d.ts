@@ -1,6 +1,7 @@
 /// @typescript-eslint/no-empty-interface
-import { theme } from '@infrastructure/theme';
 import 'styled-components';
+
+import { theme } from '@infrastructure/theme';
 
 type CustomTheme = typeof theme;
 

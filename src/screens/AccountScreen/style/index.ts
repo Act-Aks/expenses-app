@@ -1,9 +1,10 @@
-import { SCREEN_HEIGHT } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Pressable, Text, TouchableWithoutFeedback, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components';
+
+import { SCREEN_HEIGHT } from '@constants';
 
 export const StyledScreen = styled(SafeAreaView)({
   flex: 1,

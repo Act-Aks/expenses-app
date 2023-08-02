@@ -1,4 +1,3 @@
-import { SCREEN_WIDTH } from '@constants';
 import { useEffect } from 'react';
 import {
   interpolate,
@@ -7,6 +6,8 @@ import {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
+
+import { SCREEN_WIDTH } from '@constants';
 
 const useAccountAnimationStyles = ({ value }: { value: number }) => {
   const animation = useSharedValue(value ?? 0);
