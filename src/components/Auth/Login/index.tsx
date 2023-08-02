@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Input from '@components/Input';
 import { Colors } from '@infrastructure/theme';
 import useAuthenticationContext from '@services/auth/authContext';
 
@@ -9,7 +10,6 @@ import {
   FormInputContainer,
   FormInputs,
   GradientForm,
-  Input,
 } from '../style';
 
 const Login = () => {

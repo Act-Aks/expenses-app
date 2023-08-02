@@ -53,7 +53,7 @@ const Tabs = createBottomTabNavigator<TabsStackParamsList>();
 const TabButton = (props: TabButtonProps) => {
   const { item, onPress, accessibilityState } = props;
   const focused = accessibilityState?.selected;
-  const tabTranslateY = useSharedValue(0);
+  const tabTranslateY = useSharedValue(focused ? -10 : 0);
 
   useEffect(() => {
     if (focused) {

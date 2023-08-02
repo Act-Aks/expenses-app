@@ -2,7 +2,13 @@ import { User } from 'firebase/auth';
 import { createContext, useContext, useState } from 'react';
 import { Alert } from 'react-native';
 
-import { FIREBASE_AUTH, onAuthStateChanged } from '@configs/firebase';
+import {
+  doc,
+  FIREBASE_AUTH,
+  FIREBASE_DB,
+  onAuthStateChanged,
+  setDoc,
+} from '@configs/firebase';
 
 import { createAccountRequest, loginRequest } from './authService';
 
@@ -15,6 +21,7 @@ interface AuthContext {
     email: string,
     password: string,
     repeatedPassword: string,
+    userName: string,
   ) => void;
   onLogout: () => void;
   user: User | null;
@@ -62,6 +69,7 @@ export const AuthenticationProvider = (props: {
     email: string,
     password: string,
     repeatedPassword: string,
+    userName: string,
   ) => {
     if (password !== repeatedPassword) {
       setError('Error: Passwords do not match');
@@ -71,13 +79,21 @@ export const AuthenticationProvider = (props: {
 
     setIsLoading(true);
     createAccountRequest(auth, email, password)
-      .then(res => {
+      .then(async res => {
         setUser(res.user);
-        setIsLoading(false);
+        const data = {
+          _id: res.user.uid,
+          userName,
+          providerData: res.user.providerData[0],
+        };
+        await setDoc(doc(FIREBASE_DB, 'users', res.user.uid), data);
       })
       .catch(err => {
         setError(err.message);
         Alert.alert('Sign Up Failed: ', err.message);
+        setIsLoading(false);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   };

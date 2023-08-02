@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: Constants.expoConfig?.extra?.FirebaseApiKey,
@@ -36,7 +36,9 @@ export {
   FIREBASE_AUTH,
   FIREBASE_DB,
   createUserWithEmailAndPassword,
+  doc,
   onAuthStateChanged,
+  setDoc,
   signInWithEmailAndPassword,
   type CreateUserWithEmailAndPassword,
   type SignInWithEmailAndPassword,

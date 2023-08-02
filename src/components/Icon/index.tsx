@@ -17,7 +17,7 @@ export enum IconType {
   EvilIcons = 'evilicon',
 }
 
-type IconProps = {
+export type IconProps = {
   type: IconType;
   name: string;
   color?: string;

@@ -26,19 +26,6 @@ export const FormInputs = styled(KeyboardAvoidingView)({
   gap: '8px',
 });
 
-export const Input = styled(TextInput).attrs(props => ({
-  placeholderTextColor: props.theme.colors.amber300,
-}))(props => ({
-  gap: '8px',
-  height: '50px',
-  borderWidth: '1px',
-  borderColor: props.theme.colors.amber100,
-  borderRadius: '25px',
-  padding: '12px',
-  backgroundColor: props.theme.colors.violet500,
-  color: props.theme.colors.white,
-}));
-
 export const FormButton = styled(Pressable)(props => ({
   backgroundColor: props.theme.colors.cyan600,
   padding: '16px',

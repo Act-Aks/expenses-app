@@ -19,12 +19,17 @@ const useAccountAnimationStyles = ({ value }: { value: number }) => {
       [-SCREEN_WIDTH, 0],
     );
 
+    const opacity = withTiming(interpolate(animation.value, [0, 1], [0, 1]), {
+      duration: 1000,
+    });
+
     return {
       transform: [
         {
           translateX: withTiming(interpolation, { duration: 1000 }),
         },
       ],
+      opacity,
     };
   });
 
