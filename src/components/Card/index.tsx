@@ -1,18 +1,18 @@
-import { Card as RNCard } from '@rneui/themed';
-import { Text, View } from 'react-native';
+import { Card as RNCard, CardProps as RNCardProps } from '@rneui/themed';
 
-const Card = () => {
+import { styles as cardStyles } from './style';
+
+interface CardProps extends RNCardProps {
+  children?: React.ReactNode;
+}
+
+const Card = ({ containerStyle, wrapperStyle, ...props }: CardProps) => {
   return (
-    <View>
-      <RNCard>
-        <Text>DashBoard</Text>
-        <Text>DashBoard</Text>
-        <Text>DashBoard</Text>
-        <Text>DashBoard</Text>
-        <Text>DashBoard</Text>
-        <Text>DashBoard</Text>
-      </RNCard>
-    </View>
+    <RNCard
+      containerStyle={[cardStyles.container, containerStyle]}
+      wrapperStyle={[cardStyles.wrapper, wrapperStyle]}>
+      {props.children}
+    </RNCard>
   );
 };
 

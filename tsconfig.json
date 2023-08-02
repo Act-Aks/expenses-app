@@ -11,8 +11,10 @@
       "@constants/*": ["src/constants/*"],
       "@hooks/*": ["src/hooks/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
+      "@reducers/*": ["src/reducers/*"],
       "@screens/*": ["src/screens/*"],
       "@services/*": ["src/services/*"],
+      "@typings/*": ["src/typings/*"],
       "@utils/*": ["src/utils/*"]
     },
     "types": [

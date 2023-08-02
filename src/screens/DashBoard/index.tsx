@@ -1,10 +1,11 @@
-import Card from '@components/Card';
 import { View } from 'react-native';
+
+import Expenses from '@components/Expenses';
 
 const DashBoard = () => {
   return (
     <View>
-      <Card />
+      <Expenses />
     </View>
   );
 };
