@@ -1,5 +1,6 @@
-import Expenses from '@components/Expenses';
 import { View } from 'react-native';
+
+import Expenses from '@components/Expenses';
 
 const DashBoard = () => {
   return (

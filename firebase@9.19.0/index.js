@@ -1,12 +1,20 @@
+/***
+ * Firebase@9.19.0 setup
+
 import Constants from 'expo-constants';
-import { getApp, getApps, initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import {
+  getReactNativePersistence,
+  initializeAuth,
+} from 'firebase/auth/react-native';
 import { getFirestore } from 'firebase/firestore';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
   apiKey: Constants.expoConfig?.extra?.FirebaseApiKey,
@@ -18,11 +26,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const FIREBASE_APP =
-  getApps.length > 0 ? getApp() : initializeApp(firebaseConfig);
+const FIREBASE_APP = initializeApp(firebaseConfig);
 
 // Auth Firebase
-const FIREBASE_AUTH = getAuth(FIREBASE_APP);
+// const FIREBASE_AUTH = getAuth(FIREBASE_APP);
+const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});
 
 // Firebase Data
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
@@ -41,3 +51,5 @@ export {
   type CreateUserWithEmailAndPassword,
   type SignInWithEmailAndPassword,
 };
+
+*/
