@@ -3,15 +3,11 @@ import { useState } from 'react';
 import { IconType } from '@components/Icon';
 import Input from '@components/Input';
 import { Colors } from '@infrastructure/theme';
+import { Button } from '@rneui/themed';
 import useAuthenticationContext from '@services/auth/authContext';
+import { checkIfEmailIsValid } from '@utils';
 
-import {
-  ButtonLabel,
-  FormButton,
-  FormInputContainer,
-  FormInputs,
-  GradientForm,
-} from '../style';
+import { FormInputContainer, FormInputs, GradientForm, styles } from '../style';
 
 const CustomHeadProps = {
   type: IconType.MaterialIcons,
@@ -29,8 +25,7 @@ const Register = () => {
   const handleOnChangeUsername = (text: string) => setUsername(text);
   const handleOnChangeEmail = (text: string) => {
     setEmail(text);
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValid = emailRegex.test(email);
+    const isValid = checkIfEmailIsValid(email);
     setIsEmailValid(isValid);
   };
   const handleOnChangePassword = (text: string) => setPassword(text);
@@ -76,9 +71,15 @@ const Register = () => {
             type={'Password'}
           />
         </FormInputs>
-        <FormButton onPress={handleRegisterAccount} disabled={!isEmailValid}>
-          <ButtonLabel>{'Register'}</ButtonLabel>
-        </FormButton>
+
+        <Button
+          title={'Register'}
+          loading={isLoading}
+          disabled={!isEmailValid}
+          onPress={handleRegisterAccount}
+          buttonStyle={styles.buttonStyle}
+          disabledStyle={styles.disabledBtnStyle}
+        />
       </FormInputContainer>
     </GradientForm>
   );

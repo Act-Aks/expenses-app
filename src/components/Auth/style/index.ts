@@ -1,14 +1,31 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import {
-  KeyboardAvoidingView,
-  Pressable,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import styled from 'styled-components';
 
 import { Colors } from '@infrastructure/theme';
+
+export const styles = StyleSheet.create({
+  buttonStyle: {
+    backgroundColor: Colors.cyan600,
+    padding: 16,
+    borderRadius: 40,
+    borderWidth: 2,
+    borderColor: Colors.white,
+    shadowColor: Colors.white,
+    shadowOffset: {
+      width: 2,
+      height: 0,
+    },
+    shadowOpacity: 0.35,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  disabledBtnStyle: {
+    backgroundColor: Colors.gray300,
+    borderColor: Colors.red500,
+    shadowColor: Colors.gray200,
+  },
+});
 
 export const GradientForm = styled(LinearGradient)<{ loading?: boolean }>`
   border-radius: 20px;
@@ -25,23 +42,3 @@ export const FormInputContainer = styled(View)({
 export const FormInputs = styled(KeyboardAvoidingView)({
   gap: '8px',
 });
-
-export const FormButton = styled(Pressable)(props => ({
-  backgroundColor: props.theme.colors.cyan600,
-  padding: '16px',
-  borderRadius: '40px',
-  borderWidth: '2px',
-  borderColor: 'white',
-  shadowColor: props.theme.colors.white,
-  shadowOffset: '0px 4px',
-  shadowOpacity: '0.35',
-  shadowRadius: '5px',
-  elevation: '5',
-}));
-
-export const ButtonLabel = styled(Text)(props => ({
-  fontWeight: 'bold',
-  fontSize: '16px',
-  alignSelf: 'center',
-  color: props.theme.colors.white,
-}));

@@ -10,10 +10,6 @@ export const StyledScreen = styled(SafeAreaView)({
   flex: 1,
 });
 
-export const AvoidKeyboard = styled(TouchableWithoutFeedback)({
-  flex: 1,
-});
-
 export const GradientView = styled(LinearGradient)`
   justify-content: flex-end;
 `;
@@ -37,9 +33,9 @@ export const CloseButton = styled(Animated.View)(props => ({
   width: '40px',
   justifyContent: 'center',
   alignItems: 'center',
-  top: '-40px',
-  right: '20px',
   position: 'absolute',
+  left: '3px',
+  zIndex: '2',
 }));
 
 export const CloseText = styled(Text)(props => ({

@@ -9,7 +9,6 @@ import useFadeAnimation from '@utils/animations/useFadeAnimation';
 
 import {
   AnimatedView,
-  AvoidKeyboard,
   ButtonContainer,
   ButtonLabel,
   CloseButton,
@@ -50,60 +49,58 @@ const AccountScreen: React.FC<AccountScreenProps> = () => {
 
   return (
     <StyledScreen>
-      <AvoidKeyboard onPress={dismissKeyboard}>
-        <GradientView
-          colors={[Colors.purple400, Colors.blue400, Colors.purple400]}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          style={StyleSheet.absoluteFill}>
-          <AnimatedView style={[StyleSheet.absoluteFill, imageAnimationStyle]}>
-            <Svg height={SCREEN_HEIGHT} width={SCREEN_WIDTH}>
-              <ClipPath id="clipPathId">
-                <Ellipse
-                  cx={SCREEN_WIDTH / 2}
-                  rx={SCREEN_HEIGHT}
-                  ry={SCREEN_HEIGHT}
-                />
-              </ClipPath>
-              <Image
-                href={require('@assets/main.png')}
-                height={SCREEN_HEIGHT}
-                width={SCREEN_WIDTH}
-                preserveAspectRatio={'xMidyMid slice'}
-                clipPath="url(#clipPathId)"
+      <GradientView
+        colors={[Colors.purple400, Colors.blue400, Colors.purple400]}
+        start={{ x: 1, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={StyleSheet.absoluteFill}>
+        <AnimatedView style={[StyleSheet.absoluteFill, imageAnimationStyle]}>
+          <Svg height={SCREEN_HEIGHT} width={SCREEN_WIDTH}>
+            <ClipPath id="clipPathId">
+              <Ellipse
+                cx={SCREEN_WIDTH / 2}
+                rx={SCREEN_HEIGHT}
+                ry={SCREEN_HEIGHT}
               />
-            </Svg>
+            </ClipPath>
+            <Image
+              href={require('@assets/main.png')}
+              height={SCREEN_HEIGHT}
+              width={SCREEN_WIDTH}
+              preserveAspectRatio={'xMidyMid slice'}
+              clipPath="url(#clipPathId)"
+            />
+          </Svg>
+        </AnimatedView>
+
+        <ButtonContainer>
+          <AnimatedView style={[fadeAnimatedStyle, buttonAnimationStyle]}>
+            <StyledPressable onPress={handleLoginPress}>
+              <ButtonLabel>{'LOGIN'}</ButtonLabel>
+            </StyledPressable>
           </AnimatedView>
+          <AnimatedView style={[fadeAnimatedStyle, buttonAnimationStyle]}>
+            <StyledPressable onPress={handleRegisterPress}>
+              <ButtonLabel>{'REGISTER'}</ButtonLabel>
+            </StyledPressable>
+          </AnimatedView>
+        </ButtonContainer>
 
-          <ButtonContainer>
-            <AnimatedView style={[fadeAnimatedStyle, buttonAnimationStyle]}>
-              <StyledPressable onPress={handleLoginPress}>
-                <ButtonLabel>{'LOGIN'}</ButtonLabel>
-              </StyledPressable>
-            </AnimatedView>
-            <AnimatedView style={[fadeAnimatedStyle, buttonAnimationStyle]}>
-              <StyledPressable onPress={handleRegisterPress}>
-                <ButtonLabel>{'REGISTER'}</ButtonLabel>
-              </StyledPressable>
-            </AnimatedView>
-          </ButtonContainer>
-
-          <FormContainer style={[StyleSheet.absoluteFill, formAnimationStyle]}>
-            <FormContents>
-              <CloseButton style={closeBtnAnimationStyle}>
-                <CloseText
-                  onPress={() => {
-                    dismissKeyboard();
-                    setAnimationValue(1);
-                  }}>
-                  {'X'}
-                </CloseText>
-              </CloseButton>
-              {screen === 'LOGIN' ? <Login /> : <Register />}
-            </FormContents>
-          </FormContainer>
-        </GradientView>
-      </AvoidKeyboard>
+        <FormContainer style={[StyleSheet.absoluteFill, formAnimationStyle]}>
+          <FormContents>
+            <CloseButton style={closeBtnAnimationStyle}>
+              <CloseText
+                onPress={() => {
+                  dismissKeyboard();
+                  setAnimationValue(1);
+                }}>
+                {'X'}
+              </CloseText>
+            </CloseButton>
+            {screen === 'LOGIN' ? <Login /> : <Register />}
+          </FormContents>
+        </FormContainer>
+      </GradientView>
     </StyledScreen>
   );
 };
